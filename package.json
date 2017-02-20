@@ -1,0 +1,29 @@
+{
+  "name": "2017-03-vanhusvahti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync-dev": "gulp build && plus-aws-sync dev 2017-03-vanhusvahti public",
+    "sync-prod": "gulp build --env prod && plus-aws-sync prod 2017-03-vanhusvahti public",
+    "rm-dev": "plus-aws-rm dev 2017-03-vanhusvahti",
+    "rm-prod": "plus-aws-rm prod 2017-03-vanhusvahti",
+    "build-html": "gulp build-html",
+    "build-css": "gulp build-css",
+    "build-js": "gulp build-js",
+    "build": "gulp build",
+    "open": "open -a \"Google Chrome\" http://uutiset.local.yle.fi:45100/uutiset/3-1?esiConfig=http://dev.yle.fi/2017/2017-03-vanhusvahti"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://tebeste@chili.yle.fi/stash/scm/plus/2017-03-vanhusvahti.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chosen-jquery-browserify": "^1.0.0",
+    "peity": "^3.2.1"
+  }
+}

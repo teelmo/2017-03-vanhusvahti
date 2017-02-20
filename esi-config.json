@@ -1,0 +1,10 @@
+{
+  "htmlURL": "http://dev.yle.fi/2017/2017-03-vanhusvahti/public/index.html",
+  "scripts": [
+    "http://dev.yle.fi/2017/2017-03-vanhusvahti/public/js/script.min.js"
+  ],
+  "css": [
+    "http://dev.yle.fi/2017/2017-03-vanhusvahti/public/css/styles.min.css"
+  ],
+  "layout": "wide"
+}
