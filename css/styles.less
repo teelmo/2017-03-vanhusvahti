@@ -65,65 +65,64 @@
   // Header styles.
   .header {
     background-color: #333;
+    box-sizing: border-box;
     height: 50px;
     margin: auto auto;
+    padding: 0 10px;
     width: 100%;
     z-index: 3;
-    .inner {
-      padding: 0 10px;
-    }
     .content_wrapper {
       margin: auto auto;
       max-width: 940px;
       padding: 0;
-    }
-    .municipality_selection_container {
-      float: left;
-      margin-top: 9px;
-      .chzn-container {
-        margin-top: -1px;
-      }
-    }
-    .category_selection_container {
-      color: #fff;
-      float: right;
-      position: relative;
-      i {
-        color: #ffde53;
-        cursor: pointer;
-        font-size: 44px;
-        margin-top: 5px;
-        &:hover {
-          color: rgba(255, 222, 83, 0.5)
-        }
-      }
-      .selected_category {
+      .municipality_selection_container {
         float: left;
-        display: none;
-        font-size: 20px;
-        height: 50px;
-        line-height: 50px;
-        margin-right: 10px;
-        text-align: right;
-        @media all and (min-width: 600px) {
-          display: block;
+        margin-top: 9px;
+        .chzn-container {
+          margin-top: -1px;
         }
       }
-      .category_selection_list {
-        background-color: #ffde53;
-        font-size: 16px;
-        line-height: 30px;
-        list-style-type: none;
-        margin-top: 4px;
-        padding: 15px 20px;
-        position: absolute;
-        right: 0;
-        width: 105px;
-        z-index: 2;
-        a {
-          color: #000;
-          &.active {
-            text-decoration: underline;
+      .category_selection_container {
+        color: #fff;
+        float: right;
+        position: relative;
+        i {
+          color: #ffde53;
+          cursor: pointer;
+          font-size: 44px;
+          margin-top: 5px;
+          &:hover {
+            color: rgba(255, 222, 83, 0.5)
+          }
+        }
+        .selected_category {
+          display: none;
+          float: left;
+          font-size: 20px;
+          height: 50px;
+          line-height: 50px;
+          margin-right: 10px;
+          text-align: right;
+          @media all and (min-width: 600px) {
+            display: block;
+          }
+        }
+        .category_selection_list {
+          background-color: #ffde53;
+          font-size: 16px;
+          line-height: 30px;
+          list-style-type: none;
+          margin-top: 4px;
+          padding: 15px 20px;
+          position: absolute;
+          right: 0;
+          width: 105px;
+          z-index: 2;
+          a {
+            color: #000;
+            &.active {
+              text-decoration: underline;
+            }
           }
         }
       }
@@ -205,7 +204,7 @@
         }
       }
     }
-    // Question view.
+    // Questions view.
     &.questions_view {
       left: 0;
       position: relative;
@@ -234,15 +233,14 @@
         padding-top: 40px;
       }
       .municipality_answer {
-        padding: 25px 30px 25px 30px;
         background-color: #f1f1f1;
-        p {
-          margin-bottom: 0;
-        }
+        padding: 25px 30px 25px 30px;
         h3 {
           margin-top: 0;
         }
-        
+        p {
+          margin-bottom: 0;
+        }
       }
       .homecareunit_container,
       .municipality_answer {
