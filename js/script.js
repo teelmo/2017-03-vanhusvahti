@@ -394,11 +394,9 @@
       plusApp.initEvents();
 
       plusApp.initMoveScroller();
-      plusApp.initMediaUrls();
       plusApp.initHeader();
       plusApp.getMunicipalitySelectionData();
       plusApp.getMunicipalityData();
-      plusApp.initEvents();
       plusApp.selectedView = $('.init_view', plus);
       plusApp.initialized = true;
       window.location.hash = 'etusivu';
