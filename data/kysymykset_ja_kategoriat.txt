@@ -1,0 +1,36 @@
+Hakeminen
+
+1/3 Missä ajassa iäkäs henkilö yleensä saa kiireelliset sosiaali&shy;palvelut?
+2/3 Kuinka nopeasti kirjallinen päätös ei-kiireellisistä sosiaali&shy;palveluista yleensä tehdään?
+3/3 Kuinka nopeasti myönnetyt, ei-kiireelliset palvelut yleensä saa?
+
+Odotusajat
+
+1/4 Voiko omaishoidon tukea joutua odottamaan yli&nbsp;3&nbsp;kuukautta?
+2/4 Voiko asunnon muutostöitä joutua odottamaan yli 3&nbsp;kuukautta?
+3/4 Voiko tehostetun palvelu&shy;asumisen paikkaa joutua odottamaan yli&nbsp;3&nbsp;kuukautta?
+4/4 Minkä verran kunnassa on tehostettua palveluasumista ikäihmisille?
+
+Omaishoito
+
+1/4 Onko kunta budjetoinut riittävästi rahaa yli 65-vuotiaille omais&shy;hoidon&shy;tuen tarvitsijoille?
+2/4 Saavatko yli 65-vuotiaat, sopimuksen tehneet omaishoitajat riittävästi tukea ja palveluita?
+3/4 Voidaanko iäkkään hoito järjestää kotona tai kodinomaisessa paikassa omaishoitajan lakisääteisen loman aikana?
+Kuntoutus
+4/4 Voidaanko iäkkään hoito järjestää kotona tai kodinomaisessa paikassa omaishoitajan sairastuessa?
+
+Henkilöstö
+
+1/3 Onko kunnan vanhusten&shy;hoitoon riittävästi koulutettua työvoimaa suhteessa palvelun&shy;tarpeeseen?
+2/3 Nimetäänkö kunnassa vastuu&shy;työntekijä, jolta iäkäs ihminen saa tarvitessaan apua palvelujen toteuttamiseen ja yhteen&shy;sovittamiseen?
+3/3 Kuinka paljon kunnan koti&shy;hoidon yksiköissä piti olla hoiva&shy;työhön osallistuvaa henkilökuntaa seuranta&shy;viikolla ja paljonko sitä todellisuudessa oli?
+
+Kotihoito (nämä ovat yksiköittäin, ei kunnittain)
+
+Tarjoaako yksikkö kotihoitoa arkiöisin?
+Tarjoaako yksikkö kotihoitoa viikonloppuöisin?
+Toimiiko yksikön alueella saattohoitotiimi?
+Toimiiko yksikön alueella kotiutustiimi?
+Toimiiko yksikkönne alueella kuntoutustiimi?
+Kuinka suurelle osalle yksikön asiakkaista on järjestetty mahdollisuus ulkoiluun viikoittain?
+Kuinka suurelle osalle yksikön asiakkaista on järjestetty mielekästä tekemistä ja harrastusmahdollisuuksia?
