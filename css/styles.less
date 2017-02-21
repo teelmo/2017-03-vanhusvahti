@@ -33,7 +33,7 @@
     line-height: 28px;
     margin-bottom: 25px;
     @media all and (min-width: 600px) {
-      font-size: 34px;
+      font-size: 30px;
       line-height: 38px;
     }
   }
@@ -56,7 +56,7 @@
         display: inline-block;
         font-size: 50px;
         margin-left: -40px;
-        margin-top: -10px;
+        margin-top: 2px;
         position: absolute;
       }
     }
@@ -73,6 +73,7 @@
       padding: 0 10px;
     }
     .content_wrapper {
+      margin: auto auto;
       max-width: 940px;
       padding: 0;
     }
@@ -205,7 +206,7 @@
       }
     }
     // Question view.
-    &.question_view {
+    &.questions_view {
       left: 0;
       position: relative;
       &.questions_view_6 {
@@ -241,55 +242,55 @@
         h3 {
           margin-top: 0;
         }
+        
       }
-      .feedback_toggle {
-        color: #ffde53;
-        cursor: pointer;
-        display: inline-block;
-        float: right;
-        font-size: 30px;
-        margin-top: -50px;
-        vertical-align: middle;
+      .homecareunit_container,
+      .municipality_answer {
+        .feedback_container {
+          background-color: #f1f1f1;
+          margin-top: 15px;
+          p {
+            font-size: 15px;
+            line-height: 22px;
+            margin-bottom: 10px;
+          }
+          .feedback_textarea {
+            height: 100px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            outline: 0;
+            width: 99%;
+          }
+          .thank_you {
+            font-size: 14px;
+            float: right;
+          }
+        }
+        .feedback_toggle {
+          color: #ffde53;
+          cursor: pointer;
+          display: inline-block;
+          float: right;
+          font-size: 30px;
+          margin-top: -50px;
+          vertical-align: middle;
+        }
         .button {
+          appearance: none;
+          background-color: #ffde53;
+          border: 0;
+          color: #000;
+          cursor: pointer;
+          font-family: 'Droid Serif', arial;
           font-size: 14px;
           height: 35px;
-          margin-top: 8px;
+          margin-top: 15px;
           outline: none;
-          padding: 0;
           text-align: center;
           width: 120px;
           &:hover {
             background-color: rgba(255, 222, 83, 0.8);
           }
-        }
-      }
-      .feedback_container {
-        background-color: #f1f1f1;
-        margin-top: 15px;
-        p {
-          font-size: 15px;
-          line-height: 22px;
-          margin-bottom: 10px;
-        }
-        .feedback_textarea {
-          height: 100px;
-          margin-bottom: 10px;
-          margin-top: 10px;
-          outline: 0;
-          width: 99%;
-        }
-        .button {
-          float: right;
-          font-size: 14px;
-          height: 35px;
-          width: 120px;
-          &:hover {
-            background-color: rgba(255, 222, 83, 0.8);
-          }
-        }
-        .thank_you {
-          font-size: 14px;
-          float: right;
         }
       }
     }
@@ -306,6 +307,9 @@
         letter-spacing: 0.05em;
         margin: 30px 0 10px 0;
         text-transform: uppercase;
+      }
+      p {
+        margin-bottom: 20px;
       }
  
       /* Back container styles */
@@ -371,17 +375,19 @@
             height: 40px;
             position: absolute;
             width: 100%;
-            .value_container {
-              color: #000;
-              display: inline-block;
-              font-size: 14px;
-              height: 40px;
-              line-height: 40px;
-              margin-left: 10px;
-              position: relative;
-              @media all and (min-width: 600px) {
-                font-size: 16px;
-              }
+            z-index: 1;
+          }
+          .value_container {
+            color: #000;
+            display: inline-block;
+            font-size: 14px;
+            height: 40px;
+            line-height: 40px;
+            margin-left: 10px;
+            position: relative;
+            z-index: 2;
+            @media all and (min-width: 600px) {
+              font-size: 16px;
             }
           }
         }
@@ -446,6 +452,13 @@
       p {
         font-size: 16px;
         margin-bottom: 15px;
+        a {
+          color: #fff;
+          text-decoration: underline;
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
       h3 {
         font-size: 24px;
@@ -499,7 +512,10 @@
   }
   .questions_view_6 .homecareunit_selection_container,
   .questions_view_6 .chosen_select,
+  .questions_view_6 .chzn-drop,
+  .questions_view_6 .chzn-search input,
   .questions_view_6 .chzn-container {
+    box-sizing: border-box;
     width: 100% !important;
     max-width: 100% !important;
   }
