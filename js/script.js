@@ -56,12 +56,7 @@
             top: 0,
             width: plus.width() + 'px'
           }).show();
-          if (plus.hasClass('wide')) {
-            $('.content_container', plus).css('padding-top', '50px');
-          }
-          else {
-            $('.content_container', plus).css('padding-top', '50px');
-          }
+          $('.content_container', plus).css('padding-top', '50px');
         } 
         else {
           $('.content_container', plus).css('padding-top', '0');
@@ -77,19 +72,6 @@
         }
       };
       $(window).scroll(move);
-    },
-    initHeights: function () {
-      if ($('html').hasClass('no-touch')) {
-        // $('.init_view', plus).height($(window).height());
-      } 
-    },
-    scaleHeights: function () {
-      // var container = $('.init_view', plus).css('height', 'auto');
-      // var height = (($(window).height() - 50) > container.outerHeight()) ? $(window).height() - 50 : container.outerHeight();
-      // container.height(height);
-    },
-    initChosen: function (element) {
-      $(element, plus).chosen();
     },
     getMunicipalitySelectionData: function () {
       $.ajax({
@@ -107,6 +89,9 @@
         $('<option value="' + municipality.o + '" data-municipality="' + municipality.m + '" data-value-2013="' + municipality.y2013 + '" data-value-2030="' + municipality.y2030 + '">' + municipality.m + '</option>').appendTo(container);
       });
       plusApp.initChosen('.municipality_selection');
+    },
+    initChosen: function (element) {
+      $(element, plus).chosen();
     },
     getMunicipalityData: function () {
       $.ajax({
@@ -199,23 +184,15 @@
       $.each(elements, function (i, element) {
         $('.' + element, plus).text(plusApp.municipalityHomeCareUnitData[plusApp.selectedMunicipality][selected_unit][element]);
       });
-      $('.homecareunit_container', plus).slideDown(500, plusApp.scaleHeights);
-    },
-    initHeader: function () {
-      var container = $('.content_container .header .inner', plus);
-      var content_wrapper = $('<div class="content_wrapper"></div>').appendTo(container);
-      $('<div class="municipality_selection_container"><select class="municipality_selection chosen_select"><option value="" disabled="disabled" selected="selected">Valitse kunta</option><option value="" disabled="disabled">- - - - - - - - - -</option></select></div>').appendTo(content_wrapper);
-      $('<div class="category_selection_container"><span class="selected_category"></span><span class="category_selection_list_toggler"><i class="fa fa-align-justify"></i></span><ul class="category_selection_list hidden"><li><a href="javascript:;" class="question_view_anchor_1" data-show=".questions_view_1">Hakeminen</a></li><li><a href="javascript:;" class="question_view_anchor_2" data-show=".questions_view_2">Odotusajat</a></li><li><a href="javascript:;" class="question_view_anchor_3" data-show=".questions_view_3">Omaishoito</a></li><li><a href="javascript:;" class="question_view_anchor_4" data-show=".questions_view_4">Kuntoutus</a></li><li><a href="javascript:;" class="question_view_anchor_5" data-show=".questions_view_5">Henkilöstö</a></li><li><a href="javascript:;" class="question_view_anchor_6" data-show=".questions_view_6">Kotihoito</a></li></ul></div>').appendTo(content_wrapper);
+      $('.homecareunit_container', plus).slideDown(500);
     },
     initSomelinks: function () {
       $('<table class="share_container"><tr><td><a href="" class="facebook" target="_blank" title="Jaa Facebookissa"><i class="fa fa-yle-some fa-facebook"></i></a></td><td><a href="" class="twitter" target="_blank" title="Jaa Twitteriss&auml;"><i class="fa fa-yle-some fa-twitter"></i></a></tr><tr class="some_numbers"><td><span class="facebook_nr"></span></td><td><span class="twitter_nr"></span></td></tr></table>').appendTo($('.container', plus));
-
-      var url = 'http://yle.fi/uutiset/7853653';
+      var url = window.location.href.replace(/#.*$/, '');
 
       // Facebook share.
       var fbtitle = 'Ylen Vanhusvahti avattu – katso missä jamassa oman kuntasi vanhuspalvelut ovat';
       // var fbtext = 'Testaa, tiedätkö sinä, millaisesta ruuasta sydämesi ja verisuonesi pitäisivät.';
-
       $('.facebook', plus).attr({href: 'https://www.facebook.com/dialog/feed?app_id=147925155254978&display=popup&name=' + encodeURIComponent(fbtitle) + '&link=' + encodeURIComponent(url) + '&redirect_uri=' + url + '&picture=' + encodeURIComponent('http://img.yle.fi/uutiset/kotimaa/article7866073.ece/ALTERNATES/w960/vanhusvahti+tunnus')});
 
       // Twitter share.
@@ -231,6 +208,30 @@
       //   },
       //   url: 'http://yle.fi/uutiset/alpha.yle.fi/somenumbers?uri=http://yle.fi/uutiset/ylen_vanhusvahti_avattu__katso_missa_jamassa_oman_kuntasi_vanhuspalvelut_ovat/7853653'
       // });
+    },
+    updateMunicipality: function (element) {
+      $('.municipality_selection_button_container', plus).slideDown(500);
+      plusApp.selectedMunicipalityCollection = element.find('option:selected').val();
+      plusApp.selectedMunicipality = element.find('option:selected').html();
+      plusApp.setMunicipalityData();
+      plusApp.initHomeCareUnitSelection();
+      $('.homecareunit_container', plus).slideUp(500);
+      $('.homecareunit_selection', plus).trigger('liszt:updated');
+      /*jshint -W030 */
+      (element.val()) ? $('.select_municipality', plus).addClass('active').removeAttr('disabled') : $('.select_municipality', plus).removeClass('active').attr('disabled', 'disabled');
+      $('.municipality_selection', plus).find('option').removeAttr('selected');
+      $('.municipality_selection', plus).find('option[data-municipality="' + plusApp.selectedMunicipality + '"]').prop('selected', true);
+      $('.municipality_selection', plus).trigger('liszt:updated');
+      $('.selected_municipality', plus).hide().fadeIn(500).html(plusApp.selectedMunicipality);
+      $('.answer', plus).hide().fadeIn(500);
+
+      plusApp.updateColumnChart($('.init_view .municipality_selection', plus).find('option:selected').attr('data-value-2013'), $('.municipality_selection', plus).find('option:selected').attr('data-value-2030'));
+
+      // Reset feedback form.
+      $('.feedback_textarea', plus).removeAttr('disabled').val('');
+      $('.feedback_container .submit', plus).show();
+      $('.feedback_container .thank_you', plus).hide();
+      $('.feedback_container', plus).slideUp(500);
     },
     updateColumnChart: function (y2013, y2030) {
       $.fn.peity.defaults.pie = {
@@ -270,12 +271,12 @@
       if (plusApp.selectedView.data('show-type') == 'fade' && $(element, plus).data('show-type') == 'fade') {
         if (plusApp.selectedView.data('hash') != $(element, plus).data('hash')) {
           $('.container', plus).hide();
-          $(element, plus).fadeIn(500, plusApp.scaleHeights);
+          $(element, plus).fadeIn(500);
         }
       }
       else {
         $('.container', plus).slideUp(1000);
-        $(element, plus).slideDown(1000, plusApp.scaleHeights);
+        $(element, plus).slideDown(1000);
       }
       ($(element, plus).hasClass('questions_view')) ? $('.selected_category', plus).html($(element, plus).data('name')) : $('.selected_category', plus).text('Aihealue');
       plusApp.selectedView = $(element, plus);
@@ -291,28 +292,7 @@
       // Municipality selection change.
       plus.on('change', '.municipality_selection', function (event) {
         if ($(this).find('option:selected').val() !== '') {
-          $('.municipality_selection_button_container', plus).slideDown(500, plusApp.scaleHeights);
-          plusApp.selectedMunicipalityCollection = $(this).find('option:selected').val();
-          plusApp.selectedMunicipality = $(this).find('option:selected').html();
-          plusApp.setMunicipalityData();
-          plusApp.initHomeCareUnitSelection();
-          $('.homecareunit_container', plus).slideUp(500, plusApp.scaleHeights);
-          $('.homecareunit_selection', plus).trigger('liszt:updated');
-          /*jshint -W030 */
-          ($(this).val()) ? $('.select_municipality', plus).addClass('active').removeAttr('disabled') : $('.select_municipality', plus).removeClass('active').attr('disabled', 'disabled');
-          $('.municipality_selection', plus).find('option').removeAttr('selected');
-          $('.municipality_selection', plus).find('option[data-municipality="' + plusApp.selectedMunicipality + '"]').prop('selected', true);
-          $('.municipality_selection', plus).trigger('liszt:updated');
-          $('.selected_municipality', plus).hide().fadeIn(500).html(plusApp.selectedMunicipality);
-          $('.answer', plus).hide().fadeIn(500);
-
-          plusApp.updateColumnChart($('.init_view .municipality_selection', plus).find('option:selected').attr('data-value-2013'), $('.municipality_selection', plus).find('option:selected').attr('data-value-2030'));
-
-          // Reset feedback form.
-          $('.feedback_textarea', plus).removeAttr('disabled').val('');
-          $('.feedback_container .submit', plus).show();
-          $('.feedback_container .thank_you', plus).hide();
-          $('.feedback_container', plus).slideUp(500, plusApp.scaleHeights);
+          plusApp.updateMunicipality($(this));
           // Google analytics tracker.
           if (typeof yleAnalytics !== 'undefined') {
             yleAnalytics.trackEvent('plus_' + plusApp.projectName + '_kunta_' + plusApp.selectedMunicipality);
@@ -371,7 +351,7 @@
         window.location.hash = $($(this).data('show'), plus).data('hash');
       });
       plus.on('click', '.feedback_toggle .button', function () {
-        $('.feedback_' + $(this).data('question-id'), plus).slideToggle(500, plusApp.scaleHeights);
+        $('.feedback_' + $(this).data('question-id'), plus).slideToggle(500);
       });
     },
     unmount: function () {
@@ -394,13 +374,12 @@
       plusApp.initEvents();
 
       plusApp.initMoveScroller();
-      plusApp.initHeader();
       plusApp.getMunicipalitySelectionData();
       plusApp.getMunicipalityData();
       plusApp.selectedView = $('.init_view', plus);
       plusApp.initialized = true;
       window.location.hash = 'etusivu';
-      $('.init_view', plus).slideDown(2000, plusApp.scaleHeights);
+      $('.init_view', plus).slideDown(2000);
       plusApp.initSomelinks();
     },
     meta: {
