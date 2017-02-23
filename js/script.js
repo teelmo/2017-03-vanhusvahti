@@ -152,12 +152,13 @@
       // });
       $.each(plusApp.municipalityData2016[plusApp.selectedMunicipalityCollection2016], function (element, data) {
         if (plusApp.dataDesc[element] !== undefined) {
+          var text = '';
           if (plusApp.dataDesc[element] !== false) {
-            var text = (data !== '') ? plusApp.dataDesc[element][data] : 'Ei tiedossa';
+            text = (data !== '') ? plusApp.dataDesc[element][data] : 'Ei tiedossa';
             $('.' + element, plus).html(text);
           }
           else {
-            var text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
+            text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
             $('.' + element, plus).html(text);
           }
         }
