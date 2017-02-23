@@ -211,29 +211,34 @@
       // });
     },
     updateMunicipality: function (element) {
-      $('.municipality_selection_button_container', plus).slideDown(500);
       plusApp.selectedMunicipalityCollection2014 = element.find('option:selected').data('organizer2014');
       plusApp.selectedMunicipalityCollection2016 = element.find('option:selected').data('organizer2016');
       plusApp.selectedMunicipality = element.find('option:selected').data('municipality');
-      plusApp.updateMunicipalityData();
-      // plusApp.initHomeCareUnitSelection();
-      $('.homecareunit_container', plus).slideUp(500);
-      $('.homecareunit_selection', plus).trigger('liszt:updated');
-      /*jshint -W030 */
-      (element.val()) ? $('.select_municipality', plus).addClass('active').removeAttr('disabled') : $('.select_municipality', plus).removeClass('active').attr('disabled', 'disabled');
-      $('.municipality_selection', plus).find('option').removeAttr('selected');
-      $('.municipality_selection', plus).find('option[data-municipality="' + plusApp.selectedMunicipality + '"]').prop('selected', true);
-      $('.municipality_selection', plus).trigger('liszt:updated');
-      $('.selected_municipality', plus).hide().fadeIn(500).html(plusApp.selectedMunicipality);
-      $('.answer', plus).hide().fadeIn(500);
+      if ($.inArray(parseInt(element.find('option:selected').val()), [185, 206]) === -1) {
+        $('.municipality_selection_button_container', plus).slideDown(500);
+        plusApp.updateMunicipalityData();
+        // plusApp.initHomeCareUnitSelection();
+        $('.homecareunit_container', plus).slideUp(500);
+        $('.homecareunit_selection', plus).trigger('liszt:updated');
+        /*jshint -W030 */
+        (element.val()) ? $('.select_municipality', plus).addClass('active').removeAttr('disabled') : $('.select_municipality', plus).removeClass('active').attr('disabled', 'disabled');
+        $('.municipality_selection', plus).find('option').removeAttr('selected');
+        $('.municipality_selection', plus).find('option[data-municipality="' + plusApp.selectedMunicipality + '"]').prop('selected', true);
+        $('.municipality_selection', plus).trigger('liszt:updated');
+        $('.selected_municipality', plus).hide().fadeIn(500).html(plusApp.selectedMunicipality);
+        $('.answer', plus).hide().fadeIn(500);
 
-      plusApp.updateColumnChart($('.init_view .municipality_selection', plus).find('option:selected').data('value2015'), $('.municipality_selection', plus).find('option:selected').data('value2030'));
+        plusApp.updateColumnChart($('.init_view .municipality_selection', plus).find('option:selected').data('value2015'), $('.municipality_selection', plus).find('option:selected').data('value2030'));
 
-      // Reset feedback form.
-      $('.feedback_textarea', plus).removeAttr('disabled').val('');
-      $('.feedback_container .submit', plus).show();
-      $('.feedback_container .thank_you', plus).hide();
-      $('.feedback_container', plus).slideUp(500);
+        // Reset feedback form.
+        $('.feedback_textarea', plus).removeAttr('disabled').val('');
+        $('.feedback_container .submit', plus).show();
+        $('.feedback_container .thank_you', plus).hide();
+        $('.feedback_container', plus).slideUp(500);
+      }
+      else {
+        $('.municipality_selection_button_container', plus).slideUp(500);
+      }
     },
     updateColumnChart: function (y2015, y2030) {
       $.fn.peity.defaults.pie = {
