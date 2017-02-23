@@ -73,119 +73,119 @@
       };
       $(window).scroll(move);
     },
-    getMunicipalitySelectionData: function () {
-      $.ajax({
+    getMunicipalityCollectionData2014: function () {
+      return $.ajax({
         dataType:'json',
         method:'GET',
         success: function (data) {
-          plusApp.initMunicipalitySelection(data);
+          plusApp.municipalityCollectionData2014 = data;
         },
-        url: plusApp.path + 'data/municipality.json'
+        url: plusApp.path + 'data/2014/municipality_collection.json'
       });
     },
-    initMunicipalitySelection: function (data) {
-      var container = $('.municipality_selection', plus);
-      $.each(data, function (i, municipality) {
-        $('<option value="' + municipality.o + '" data-municipality="' + municipality.m + '" data-value-2013="' + municipality.y2013 + '" data-value-2030="' + municipality.y2030 + '">' + municipality.m + '</option>').appendTo(container);
+    getMunicipalityHomecareStaffData2014: function () {
+      return $.ajax({
+        dataType:'json',
+        method:'GET',
+        success: function (data) {
+          plusApp.municipalityHomecareStaffData2014 = data;
+        },
+        url: plusApp.path + 'data/2014/municipality_homecare_staff.json'
       });
-      plusApp.initChosen('.municipality_selection');
     },
-    initChosen: function (element) {
-      $(element, plus).chosen();
+    // getMunicipalityRehabilitationStaffData2014: function () {
+    //   return $.ajax({
+    //     dataType:'json',
+    //     method:'GET',
+    //     success: function (data) {
+    //       plusApp.municipalityRehabilitationStaffData2014 = data;
+    //     },
+    //     url: plusApp.path + 'data/2014/municipality_rehabilitation_staff.json'
+    //   });
+    // },
+    // getMunicipalityHomeCareUnitData2014: function () {
+    //   return $.ajax({
+    //     dataType:'json',
+    //     method:'GET',
+    //     success: function (data) {
+    //       plusApp.municipalityHomeCareUnitData2014 = data;
+    //     },
+    //     url: plusApp.path + 'data/2014/municipality_homecareunit.json'
+    //   });
+    // },
+    getMunicipalityData2016: function () {
+      return $.ajax({
+        dataType:'json',
+        method:'GET',
+        success: function (data) {
+          plusApp.municipalityData2016 = data;
+        },
+        url: plusApp.path + 'data/2016/data.json'
+      });
     },
     getMunicipalityData: function () {
-      $.ajax({
-        dataType:'json',
-        method:'GET',
-        success: function (data) {
-          plusApp.municipalityCollectionData = data;
-        },
-        url: plusApp.path + 'data/municipality_collection.json'
-      });
-      $.ajax({
-        dataType:'json',
-        method:'GET',
-        success: function (data) {
-          plusApp.municipalityHomecareStaffData = data;
-        },
-        url: plusApp.path + 'data/municipality_homecare_staff.json'
-      });
-      $.ajax({
-        dataType:'json',
-        method:'GET',
-        success: function (data) {
-          plusApp.municipalityRehabilitationStaffData = data;
-        },
-        url: plusApp.path + 'data/municipality_rehabilitation_staff.json'
-      });
-      $.ajax({
-        dataType:'json',
-        method:'GET',
-        success: function (data) {
-          plusApp.municipalityHomeCareUnitData = data;
-        },
-        url: plusApp.path + 'data/municipality_homecareunit.json'
+      $.when(
+        plusApp.getMunicipalityCollectionData2014(),
+        plusApp.getMunicipalityHomecareStaffData2014(),
+        // plusApp.getMunicipalityRehabilitationStaffData2014(),
+        // plusApp.getMunicipalityHomeCareUnitData2014(),
+        plusApp.getMunicipalityData2016()
+      ).done(function () {
+        plusApp.initChosen('.municipality_selection');
       });
     },
-    setMunicipalityData: function () {
-      var elements;
-      if (plusApp.municipalityCollectionData[plusApp.selectedMunicipalityCollection]) {
-        $.each(plusApp.municipalityCollectionData[plusApp.selectedMunicipalityCollection], function (element, data) {
-          $('.' + element, plus).text(data);
-        });        
-      }
-      else {
-        elements = ['s_1_q_1','s_1_q_2','s_1_q_3','s_2_q_2','s_2_q_1','s_2_q_3','s_2_q_4','s_3_q_1','s_3_q_2','s_3_q_3','s_3_q_4','s_4_q_1','s_4_q_2','s_4_q_4','s_5_q_1','s_5_q_2'];
-        $.each(elements, function (i, element) {
-          $('.' + element, plus).text('Ei tiedossa');
-        });
-      }
-      if (plusApp.municipalityRehabilitationStaffData[plusApp.selectedMunicipality]) {
-        $.each(plusApp.municipalityRehabilitationStaffData[plusApp.selectedMunicipality], function (element, data) {
-          $('.' + element, plus).html(plusApp.formatNr(data));
-        });
-      }
-      else {
-        elements = ['s_4_q_3a','s_4_q_3b'];
-        $.each(elements, function (i, element) {
-          $('.' + element, plus).text('Ei tiedossa');
-        });
-      }
-      if (plusApp.municipalityHomecareStaffData[plusApp.selectedMunicipality]) {
-        $.each(plusApp.municipalityHomecareStaffData[plusApp.selectedMunicipality], function (element, data) {
-          $('.' + element, plus).html(plusApp.formatNr(data));
-        });
-      }
-      else {
-        elements = ['s_5_q_3a','s_5_q_3b'];
-        $.each(elements, function (i, element) {
-          $('.' + element, plus).text('Ei tiedossa');
-        });
-      }
+    initChosen: function (element) {
+      $(element, plus).chosen({no_results_text: 'Ei löydy kuntaa haulla'});
     },
-    initHomeCareUnitSelection: function () {
-      if (plusApp.municipalityHomeCareUnitData[plusApp.selectedMunicipality]) {
-        var container = $('.homecareunit_selection', plus);
-        $('.homecareunit_selection_container', plus).show();
-        $('.homecareunit_selection_empty_container', plus).hide();
-        $('.homecareunit_option', plus).remove();
-        $.each(plusApp.municipalityHomeCareUnitData[plusApp.selectedMunicipality], function (i, homecareunit) {
-          $('<option value="' + homecareunit.unit + '" data-id="' + i + '" class="homecareunit_option">' + homecareunit.unit + '</option>').appendTo(container);
-        });
-      }
-      else {
-        $('.homecareunit_selection_empty_container', plus).show();
-        $('.homecareunit_selection_container', plus).hide();
-      }
-      plusApp.initChosen('.homecareunit_selection');
-    },
-    setHomeCareUnitData: function (selected_unit) {
-      var elements = ['s_6_q_1','s_6_q_2','s_6_q_8','s_6_q_6','s_6_q_7','s_6_q_3','s_6_q_4'];
-      $.each(elements, function (i, element) {
-        $('.' + element, plus).text(plusApp.municipalityHomeCareUnitData[plusApp.selectedMunicipality][selected_unit][element]);
+    updateMunicipalityData: function () {
+      $.each(plusApp.municipalityCollectionData2014[plusApp.selectedMunicipalityCollection2014], function (element, data) {
+        var text = (data !== '') ? data : 'Ei tiedossa';
+        $('.' + element, plus).text(text);
+      });        
+      // $.each(plusApp.municipalityRehabilitationStaffData2014[plusApp.selectedMunicipality], function (element, data) {
+      //   var text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
+      //   $('.' + element, plus).html(text);
+      // });
+      // $.each(plusApp.municipalityHomecareStaffData2014[plusApp.selectedMunicipality], function (element, data) {
+      //   var text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
+      //   $('.' + element, plus).html(text);
+      // });
+      $.each(plusApp.municipalityData2016[plusApp.selectedMunicipalityCollection2016], function (element, data) {
+        if (plusApp.dataDesc[element] !== undefined) {
+          if (plusApp.dataDesc[element] !== false) {
+            var text = (data !== '') ? plusApp.dataDesc[element][data] : 'Ei tiedossa';
+            $('.' + element, plus).html(text);
+          }
+          else {
+            var text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
+            $('.' + element, plus).html(text);
+          }
+        }
       });
-      $('.homecareunit_container', plus).slideDown(500);
     },
+    // initHomeCareUnitSelection: function () {
+    //   if (plusApp.municipalityHomeCareUnitData2014[plusApp.selectedMunicipality]) {
+    //     var container = $('.homecareunit_selection', plus);
+    //     $('.homecareunit_selection_container', plus).show();
+    //     $('.homecareunit_selection_empty_container', plus).hide();
+    //     $('.homecareunit_option', plus).remove();
+    //     $.each(plusApp.municipalityHomeCareUnitData2014[plusApp.selectedMunicipality], function (i, homecareunit) {
+    //       $('<option value="' + homecareunit.unit + '" data-id="' + i + '" class="homecareunit_option">' + homecareunit.unit + '</option>').appendTo(container);
+    //     });
+    //   }
+    //   else {
+    //     $('.homecareunit_selection_empty_container', plus).show();
+    //     $('.homecareunit_selection_container', plus).hide();
+    //   }
+    //   plusApp.initChosen('.homecareunit_selection');
+    // },
+    // setHomeCareUnitData: function (selected_unit) {
+    //   var elements = ['s_6_q_1','s_6_q_2','s_6_q_8','s_6_q_6','s_6_q_7','s_6_q_3','s_6_q_4'];
+    //   $.each(elements, function (i, element) {
+    //     $('.' + element, plus).text(plusApp.municipalityHomeCareUnitData2014[plusApp.selectedMunicipality][selected_unit][element]);
+    //   });
+    //   $('.homecareunit_container', plus).slideDown(500);
+    // },
     initSomelinks: function () {
       $('<table class="share_container"><tr><td><a href="" class="facebook" target="_blank" title="Jaa Facebookissa"><i class="fa fa-yle-some fa-facebook"></i></a></td><td><a href="" class="twitter" target="_blank" title="Jaa Twitteriss&auml;"><i class="fa fa-yle-some fa-twitter"></i></a></tr><tr class="some_numbers"><td><span class="facebook_nr"></span></td><td><span class="twitter_nr"></span></td></tr></table>').appendTo($('.container', plus));
       var url = window.location.href.replace(/#.*$/, '');
@@ -211,10 +211,11 @@
     },
     updateMunicipality: function (element) {
       $('.municipality_selection_button_container', plus).slideDown(500);
-      plusApp.selectedMunicipalityCollection = element.find('option:selected').val();
-      plusApp.selectedMunicipality = element.find('option:selected').html();
-      plusApp.setMunicipalityData();
-      plusApp.initHomeCareUnitSelection();
+      plusApp.selectedMunicipalityCollection2014 = element.find('option:selected').data('organizer2014');
+      plusApp.selectedMunicipalityCollection2016 = element.find('option:selected').data('organizer2016');
+      plusApp.selectedMunicipality = element.find('option:selected').data('municipality');
+      plusApp.updateMunicipalityData();
+      // plusApp.initHomeCareUnitSelection();
       $('.homecareunit_container', plus).slideUp(500);
       $('.homecareunit_selection', plus).trigger('liszt:updated');
       /*jshint -W030 */
@@ -225,7 +226,7 @@
       $('.selected_municipality', plus).hide().fadeIn(500).html(plusApp.selectedMunicipality);
       $('.answer', plus).hide().fadeIn(500);
 
-      plusApp.updateColumnChart($('.init_view .municipality_selection', plus).find('option:selected').attr('data-value-2013'), $('.municipality_selection', plus).find('option:selected').attr('data-value-2030'));
+      plusApp.updateColumnChart($('.init_view .municipality_selection', plus).find('option:selected').data('value2015'), $('.municipality_selection', plus).find('option:selected').data('value2030'));
 
       // Reset feedback form.
       $('.feedback_textarea', plus).removeAttr('disabled').val('');
@@ -233,7 +234,7 @@
       $('.feedback_container .thank_you', plus).hide();
       $('.feedback_container', plus).slideUp(500);
     },
-    updateColumnChart: function (y2013, y2030) {
+    updateColumnChart: function (y2015, y2030) {
       $.fn.peity.defaults.pie = {
         delimiter:null,
         fill:['#333', '#ffde53'],
@@ -241,9 +242,9 @@
         radius:(plus.width() < 400) ? 60 : 100,
         width:null
       };
-      $('.value_2013', plus).html(plusApp.formatNr(y2013, true) + ' %');
+      $('.value_2015', plus).html(plusApp.formatNr(y2015, true) + ' %');
       $('.value_2030', plus).text(plusApp.formatNr(y2030, true) + ' %');
-      $('.pie_2013', plus).text(y2013 +',' + (100 - y2013));
+      $('.pie_2015', plus).text(y2015 +',' + (100 - y2015));
       $('.pie_2030', plus).text(y2030 +',' + (100 - y2030));
       $('.pie', plus).peity('pie'); 
     },
@@ -374,13 +375,147 @@
       plusApp.initEvents();
 
       plusApp.initMoveScroller();
-      plusApp.getMunicipalitySelectionData();
       plusApp.getMunicipalityData();
-      plusApp.selectedView = $('.init_view', plus);
-      plusApp.initialized = true;
-      window.location.hash = 'etusivu';
-      $('.init_view', plus).slideDown(2000);
       plusApp.initSomelinks();
+      plusApp.selectedView = $('.init_view', plus);
+      plusApp.selectedView.slideDown(2000);
+      window.location.hash = 'etusivu';
+      plusApp.initialized = true;
+      plusApp.dataDesc = {
+        K107_1:false,
+        K107_2:false,
+        K107_3:false,
+        K107_4:false,
+        K108_1:false,
+        K108_2:false,
+        K108_3:false,
+        K108_4:false,
+        K108_5:false,
+        K109_1:false,
+        K109_2:false,
+        K109_3:false,
+        K109_4:false,
+        K109_5:false,
+        K115_1:{
+          1:'Kyllä',
+          0:'Ei'
+        },
+        K115_4:{
+          1:'Kyllä',
+          0:'Ei'
+        },
+        K115_7:{
+          1:'Kyllä',
+          0:'Ei'
+        },
+        K63_2:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K63_3:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K63_4:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K63_5:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K63_6:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K63_7:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K63_8:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
+        K62A:{
+          1:'Täysin riittävästi',
+          2:'Melko riittävästi',
+          3:'Melko riittämättömästi',
+          4:'Täysin riittämättömästi'
+        },
+        K62B:{
+          1:'Täysin riittävästi',
+          2:'Melko riittävästi',
+          3:'Melko riittämättömästi',
+          4:'Täysin riittämättömästi'
+        },
+        K62D:{
+          1:'Täysin riittävästi',
+          2:'Melko riittävästi',
+          3:'Melko riittämättömästi',
+          4:'Täysin riittämättömästi'
+        },
+        K62E:{
+          1:'Täysin riittävästi',
+          2:'Melko riittävästi',
+          3:'Melko riittämättömästi',
+          4:'Täysin riittämättömästi'
+        },
+        K62F:{
+          1:'Täysin riittävästi',
+          2:'Melko riittävästi',
+          3:'Melko riittämättömästi',
+          4:'Täysin riittämättömästi'
+        },
+        K68_9:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_10:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K48:{
+          1:'Koulutettua työvoimaa on riittävästi.',
+          2:'Koulutettua työvoimaa on melko hyvin.',
+          3:'Koulutettua työvoimaa ei ole riittävästi.'
+        },
+        K93:{
+          1:'Kyllä',
+          0:'Ei'
+        }
+      };
     },
     meta: {
       id:this.projectName,
