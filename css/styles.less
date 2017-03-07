@@ -245,18 +245,25 @@
         p {
           margin-bottom: 5px;
           span.answer {
-            font-weight: 700;
-            &.percent:after {
-              content: ' %';
+            &.percent {
+              font-weight: 700;
+              &:after {
+                content: ' %';
+              }
             }
           }
           &.answer_2014 {
             span.answer {
               font-weight: 400;
-              
             }
-            font-size: 16px;
-            margin-top: 10px;
+            &.changed {
+              margin-top: 20px;
+            }
+          }
+          &.notice {
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
           }
         }
       }

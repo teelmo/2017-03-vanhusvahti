@@ -159,7 +159,13 @@
           }
           else {
             text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
-            $('.' + element, plus).html(text);
+            if (text === '0') {
+              $('.' + element, plus).parent('p').hide();
+            }
+            else {
+              $('.' + element, plus).parent('p').show();
+              $('.' + element, plus).html('<span class="number">' + text + '</span>');
+            }
           }
         }
       });
