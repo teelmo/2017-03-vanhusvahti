@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync-dev": "gulp build && plus-aws-sync dev 2017-03-vanhusvahti public",
-    "sync-prod": "gulp build --env prod && plus-aws-sync prod 2017-03-vanhusvahti public",
+    "sync-prod": "gulp build --env prod && plus-aws-sync prod 2017-03-vanhusvahti public && date '+\n%Y-%m-%d %H:%M:%S'",
     "rm-dev": "plus-aws-rm dev 2017-03-vanhusvahti",
     "rm-prod": "plus-aws-rm prod 2017-03-vanhusvahti",
     "build-html": "gulp build-html",

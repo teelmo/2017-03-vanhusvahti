@@ -408,6 +408,7 @@
         K109_3:false,
         K109_4:false,
         K109_5:false,
+
         K115_1:{
           1:'Kyllä',
           0:'Ei'
@@ -476,6 +477,14 @@
           4:'Riittämättömästi',
           6:'Ei tarvetta'
         },
+        K63_8_2014:{
+          5:'Liikaa',
+          1:'Riittävästi',
+          2:'Melko riittävästi',
+          3:'Kohtuullisesti',
+          4:'Riittämättömästi',
+          6:'Ei tarvetta'
+        },
         K62A:{
           1:'Täysin riittävästi',
           2:'Melko riittävästi',
@@ -505,6 +514,54 @@
           2:'Melko riittävästi',
           3:'Melko riittämättömästi',
           4:'Täysin riittämättömästi'
+        },
+        K68_1:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_1_2014:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_2:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_2_2014:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_3:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_3_2014:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_4:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
+        },
+        K68_4_2014:{
+          1:'Aina',
+          2:'Useimmiten',
+          3:'Joskus',
+          4:'Harvoin'
         },
         K68_9:{
           1:'Aina',
