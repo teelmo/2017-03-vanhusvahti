@@ -504,16 +504,16 @@
           4:'Täysin riittämättömästi'
         },
         K62E:{
-          1:'Täysin riittävästi',
-          2:'Melko riittävästi',
-          3:'Melko riittämättömästi',
-          4:'Täysin riittämättömästi'
+          0:'Ei',
+          1:'Kyllä, otettuun huomioon suunnittelussa',
+          2:'Kyllä, otettuun huomioon suunnittelussa ja siitä on tehty päätöksiä',
+          3:'Suunnitelmissa'
         },
         K62F:{
-          1:'Täysin riittävästi',
-          2:'Melko riittävästi',
-          3:'Melko riittämättömästi',
-          4:'Täysin riittämättömästi'
+          0:'Ei',
+          1:'Kyllä, otettuun huomioon suunnittelussa',
+          2:'Kyllä, otettuun huomioon suunnittelussa ja siitä on tehty päätöksiä',
+          3:'Suunnitelmissa'
         },
         K68_1:{
           1:'Aina',

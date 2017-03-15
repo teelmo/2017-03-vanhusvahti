@@ -690,7 +690,7 @@
           <h3 class="selected_municipality"></h3>
           <span class="feedback_toggle"><button class="button active" data-question-id="K68_1">Kommentoi</button></span>
           <p><span>2016:</span> <span class="answer K68_1"></span></p>
-          <p><span>2014:</span> <span class="answer K68_1_2014"></span></p>
+          <p class="answer_2014"><span>2014:</span> <span class="answer K68_1_2014"></span></p>
           <div class="feedback_K68_1 feedback_container hidden">
             <p>Oletko samaa mieltä kunnan vastauksen kanssa vai onko sinulla erilaisia kokemuksia asiasta? Voit vastata ilman nimeä. Kommentit tulevat vain toimituksen käyttöön.</p>
             <input type="hidden" class="input_question" value="K68_1" />
@@ -721,7 +721,7 @@
           <h3 class="selected_municipality"></h3>
           <span class="feedback_toggle"><button class="button active" data-question-id="K68_2">Kommentoi</button></span>
           <p><span>2016:</span> <span class="answer K68_2"></span></p>
-          <p><span>2014:</span> <span class="answer K68_2_2014"></span></p>
+          <p class="answer_2014"><span>2014:</span> <span class="answer K68_2_2014"></span></p>
           <div class="feedback_K68_2 feedback_container hidden">
             <p>Oletko samaa mieltä kunnan vastauksen kanssa vai onko sinulla erilaisia kokemuksia asiasta? Voit vastata ilman nimeä. Kommentit tulevat vain toimituksen käyttöön.</p>
             <input type="hidden" class="input_question" value="K68_2" />
@@ -748,7 +748,7 @@
           <h3 class="selected_municipality"></h3>
           <span class="feedback_toggle"><button class="button active" data-question-id="K68_3">Kommentoi</button></span>
           <p><span>2016:</span> <span class="answer K68_3"></span></p>
-          <p><span>2014:</span> <span class="answer K68_3_2014"></span></p>
+          <p class="answer_2014"><span>2014:</span> <span class="answer K68_3_2014"></span></p>
           <div class="feedback_K68_3 feedback_container hidden">
             <p>Oletko samaa mieltä kunnan vastauksen kanssa vai onko sinulla erilaisia kokemuksia asiasta? Voit vastata ilman nimeä. Kommentit tulevat vain toimituksen käyttöön.</p>
             <input type="hidden" class="input_question" value="K68_3" />
@@ -775,7 +775,7 @@
           <h3 class="selected_municipality"></h3>
           <span class="feedback_toggle"><button class="button active" data-question-id="K68_4">Kommentoi</button></span>
           <p><span>2016:</span> <span class="answer K68_4"></span></p>
-          <p><span>2014:</span> <span class="answer K68_4_2014"></span></p>
+          <p class="answer_2014"><span>2014:</span> <span class="answer K68_4_2014"></span></p>
           <div class="feedback_K68_4 feedback_container hidden">
             <p>Oletko samaa mieltä kunnan vastauksen kanssa vai onko sinulla erilaisia kokemuksia asiasta? Voit vastata ilman nimeä. Kommentit tulevat vain toimituksen käyttöön.</p>
             <input type="hidden" class="input_question" value="K68_4" />
@@ -859,10 +859,6 @@
         </div>
         <div class="clear_both"></div> -->
 
-        <!-- Question -->
-        <div class="question_divider"></div>
-        <h2><span class="selected_municipality"></span> – Kotihoito</h2>
-        <p>THL on kerännyt myös tarkempia tietoja siitä, mitä palveluja eri kotihoidon yksiköt tarjoavat kussakin kunnassa. Nämä tulokset valmistuvat myöhemmin keväällä.</p>
         <!-- <div class="homecareunit_selection_container">
           <select class="homecareunit_selection chosen_select">
             <option value="" selected="selected">Valitse kotihoidon yksikkö</option>
@@ -920,7 +916,7 @@
         <p>Mikä on vanhusten palvelujen tila tällä hetkellä? Ovatko kotiin saatavat palvelut lisääntyneet? Joutuuko esimerkiksi ympärivuorokautista hoitopaikkaa jonottamaan yli kolme kuukautta, vastoin vanhuspalvelulain vaatimusta?</p>
         <p>Kun vanhuspalvelulaki säädettiin, Terveyden ja hyvinvoinnin laitos (THL) ja Valvira saivat tehtäväkseen seurata ja arvioida ­lain täytäntöönpanoa. Ennen lain voimaantuloa toukokuussa 2013 THL teki ennennäkemättömän laajan selvityksen vanhuspalveluiden tilasta kunnissa ja toimintayksiköissä. Kyselyyn vastasivat kaikki kunnat, lähes kaikki kotihoidon yksiköt ja kunnalliset hoivakodit sekä valtaosa yksityisistä sosiaali­palveluiden tuottajista.</p>
         <p>Kysely uusittiin syksyllä 2014 ja 2016. Uusi Vanhusvahti sisältää vuosien 2014 ja 2016 tiedot. Kotihoidon yksikkökohtaisia tietoja vuodelta 2016 uudesta Vanhusvahdista ei löydy, koska ne eivät vielä ole THL:ltä saatavissa. Vuoden 2014 tietoja voit katsella <a href="http://yle.fi/uutiset/3-7853653" target="_blank">ensimmäisestä Vanhusvahdista</a></p>
-        <p>THL:n kuntakyselyyn ovat vastanneet kuntia edustavat viranhaltijat, työryhmät ja johtoryhmät.</p>
+        <p>Uuden Vanhusvahdin tiedot on saatu kuntia edustavilta viranhaltijoilta, työryhmiltä tai johtoryhmiltä. Jos tiedoissa ilmenee virheitä, kuntien tulee ottaa yhteyttä THL:ään.</p>
         <p>Kuntien vastaukset antavat aiempaa tarkemman ja paikoin ristiriitaisen kuvan vanhustenhoidon tilasta. Vanhuspalvelut ovat edelleen muutoksessa.</p>
         <h3>Datan lähde</h3>
         <p>Vanhus­palvelu­lain (980/2012) toimeenpanon seuranta. Kunnille, kuntayhtymille ja yhteistoiminta-alueille suunnatun kyselyn 2013, 2014 ja 2016 seurantatulokset. THL <a href="https://www.thl.fi/fi/web/ikaantyminen/toimivat-vanhuspalvelut/vanhuspalvelujen-tila/vanhuspalvelujen-tila-maakunnissa" target="_blank">Verkkoaineisto</a></p>
