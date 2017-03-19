@@ -14,6 +14,11 @@
 @import '../node_modules/chosen-jquery-browserify/src/main/resources/chosen.css';
 @import 'libs/font-awesome.min.css';
 @import url('http://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+@color:#ffde53;
+@color:#9ccedb;
+@hover_color:rgba(255, 222, 83, 0.5);
+@hover_color:#b6dbe5;
+
 .plus-app.plus-app-2017-03-vanhusvahti {
   /* For old browsers */
   display: block;
@@ -48,14 +53,14 @@
   }
   .accent,
   .answer {
-    border-bottom: 3px solid #ffde53;
+    border-bottom: 3px solid @color;
     color: #000;
   }
   @media all and (min-width: 600px) {
     .law_container {
       margin-left: 40px;
       &:before {
-        color: #ffde53;
+        color: @color;
         content: '§';
         display: inline-block;
         font-size: 50px;
@@ -91,12 +96,12 @@
         float: right;
         position: relative;
         i {
-          color: #ffde53;
+          color: @color;
           cursor: pointer;
           font-size: 44px;
           margin-top: 5px;
           &:hover {
-            color: rgba(255, 222, 83, 0.5)
+            color: @hover_color;
           }
         }
         .selected_category {
@@ -112,7 +117,7 @@
           }
         }
         .category_selection_list {
-          background-color: #ffde53;
+          background-color: @color;
           font-size: 16px;
           line-height: 30px;
           list-style-type: none;
@@ -134,6 +139,16 @@
   }
   .container {
     // Init view.
+    .logo_container {
+      box-sizing: border-box;
+      margin: auto auto;
+      max-width: 850px;
+      padding: 0 0 0 20px;
+      text-align: center;
+      .logo {
+        width: 100%;
+      }
+    }
     &.init_view {
       .content_wrapper {
         @media all and (min-width: 1100px) {
@@ -148,7 +163,7 @@
         margin: 15px auto 0 auto;
         .button {
           appearance: none;
-          background-color: #ffde53;
+          background-color: @color;
           border: 0;
           color: #000;
           font-family: 'Droid Serif', arial;
@@ -159,7 +174,7 @@
           text-align: center;
           width: 100%;
           &:hover {
-            background-color: rgba(255, 222, 83, 0.8);
+            background-color: @hover_color;
           }
           &.active {
             cursor: pointer;
@@ -189,12 +204,12 @@
           width: 40px;
         }
         .inner {
-          background-color: #ffde53;
+          background-color: @color;
           cursor: pointer;
           height: 100%;
           margin: 0 2px;
           &:hover {
-            background-color: rgba(255, 222, 83, 0.8);
+            background-color: @hover_color;;
           }
           h3 {
             margin: 10px 0 10px 0;
@@ -232,7 +247,7 @@
         }
       }
       .question_divider {
-        border-bottom: 3px solid #ffde53;
+        border-bottom: 3px solid @color;
         margin-bottom: 60px;
         padding-top: 40px;
       }
@@ -294,7 +309,7 @@
           }
         }
         .feedback_toggle {
-          color: #ffde53;
+          color: @color;
           cursor: pointer;
           display: inline-block;
           float: right;
@@ -304,7 +319,7 @@
         }
         .button {
           appearance: none;
-          background-color: #ffde53;
+          background-color: @color;
           border: 0;
           color: #000;
           cursor: pointer;
@@ -316,7 +331,7 @@
           text-align: center;
           width: 120px;
           &:hover {
-            background-color: rgba(255, 222, 83, 0.8);
+            background-color: @hover_color;;
           }
         }
       }
@@ -351,7 +366,7 @@
           }
         }
         i {
-          background-color: #ffde53;
+          background-color: @color;
           font-size: 18px;
           margin-right: 10px;
           padding: 10px 25px;
@@ -397,7 +412,7 @@
           margin: 6px 0;
           position: relative;
           .bar {
-            background-color: #ffde53;
+            background-color: @color;
             display: inline-block;
             height: 40px;
             position: absolute;
@@ -502,9 +517,10 @@
   }
   @media all and (min-width: 1100px) {
     background-attachment: fixed;
-    background-image: url('../img/tausta.jpg');
-    background-position: -240px 0;
-    background-repeat: repeat-x;
+    background-image: url('../img/vv_tunnus.jpg');
+    background-position: right 100px;
+    background-repeat: no-repeat;
+    background-size: 50%;
     .hidden.desktop {
       display: block;
     }

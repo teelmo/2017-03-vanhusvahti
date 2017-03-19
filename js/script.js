@@ -249,7 +249,7 @@
     updateColumnChart: function (y2015, y2030) {
       $.fn.peity.defaults.pie = {
         delimiter:null,
-        fill:['#333', '#ffde53'],
+        fill:['#333', '#9ccedb'],
         height:null,
         radius:(plus.width() < 400) ? 60 : 100,
         width:null
@@ -505,14 +505,14 @@
         },
         K62E:{
           0:'Ei',
-          1:'Kyllä, otettuun huomioon suunnittelussa',
-          2:'Kyllä, otettuun huomioon suunnittelussa ja siitä on tehty päätöksiä',
+          1:'Kyllä, otettu huomioon suunnittelussa',
+          2:'Kyllä, otettu huomioon suunnittelussa ja siitä on tehty päätöksiä',
           3:'Suunnitelmissa'
         },
         K62F:{
           0:'Ei',
-          1:'Kyllä, otettuun huomioon suunnittelussa',
-          2:'Kyllä, otettuun huomioon suunnittelussa ja siitä on tehty päätöksiä',
+          1:'Kyllä, otettu huomioon suunnittelussa',
+          2:'Kyllä, otettu huomioon suunnittelussa ja siitä on tehty päätöksiä',
           3:'Suunnitelmissa'
         },
         K68_1:{
