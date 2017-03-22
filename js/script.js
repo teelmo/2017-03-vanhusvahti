@@ -198,12 +198,12 @@
       var url = window.location.href.replace(/#.*$/, '');
 
       // Facebook share.
-      var fbtitle = 'Ylen Vanhusvahti avattu – katso missä jamassa oman kuntasi vanhuspalvelut ovat';
+      var fbtitle = 'Ovatko kuntasi vanhuspalvelut rempallaan? Katso uudesta Ylen Vanhusvahdista, millaista palvelua sinä tai vanhempasi saatte';
       // var fbtext = 'Testaa, tiedätkö sinä, millaisesta ruuasta sydämesi ja verisuonesi pitäisivät.';
-      $('.facebook', plus).attr({href: 'https://www.facebook.com/dialog/feed?app_id=147925155254978&display=popup&name=' + encodeURIComponent(fbtitle) + '&link=' + encodeURIComponent(url) + '&redirect_uri=' + url + '&picture=' + encodeURIComponent('http://img.yle.fi/uutiset/kotimaa/article7866073.ece/ALTERNATES/w960/vanhusvahti+tunnus')});
+      $('.facebook', plus).attr({href: 'https://www.facebook.com/dialog/feed?app_id=147925155254978&display=popup&name=' + encodeURIComponent(fbtitle) + '&link=' + encodeURIComponent(url) + '&redirect_uri=' + url + '&picture=' + encodeURIComponent('http://images.cdn.yle.fi/image/upload/w_1024%2Ch_576%2Cc_fill%2Cg_faces%2Cq_70/13-3-9516421.jpg')});
 
       // Twitter share.
-      var twtext = 'Ylen Vanhusvahti avattu – katso missä jamassa oman kuntasi vanhuspalvelut ovat';
+      var twtext = 'Katso uudesta Ylen Vanhusvahdista, millaista palvelua sinä tai vanhempasi saatte';
       $('.twitter', plus).attr({href: 'https://twitter.com/share?url=' + encodeURIComponent(url) + '&hashtags=vanhusvahti&text=' + encodeURIComponent(twtext)});
 
       // $.ajax({
