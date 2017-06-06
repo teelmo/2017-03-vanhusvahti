@@ -19,10 +19,10 @@
         plusApp.path = 'http://dev.yle.fi/2017/' + plusApp.projectName + '/public/';
       }
       else if (location.href.match('yle.fi/plus')) {
-        plusApp.path = 'http://yle.fi/plus/yle/2017/' + plusApp.projectName + '/';
+        plusApp.path = '//yle.fi/plus/yle/2017/' + plusApp.projectName + '/';
       }
       else {
-        plusApp.path = 'http://plus.yle.fi/' + plusApp.projectName + '/';
+        plusApp.path = '//plus.yle.fi/' + plusApp.projectName + '/';
       }
     },
     getScale: function () {
@@ -57,7 +57,7 @@
             width: plus.width() + 'px'
           }).show();
           $('.content_container', plus).css('padding-top', '50px');
-        } 
+        }
         else {
           $('.content_container', plus).css('padding-top', '0');
           if (st <= top) {
@@ -73,7 +73,7 @@
       };
       $(window).scroll(move);
     },
-    getMunicipalityCollectionData2014: function () {
+    getMunicipalityCollectionData2014: function () {
       return $.ajax({
         dataType:'json',
         method:'GET',
@@ -93,7 +93,7 @@
         url: plusApp.path + 'data/2014/municipality_homecare_staff.json'
       });
     },
-    // getMunicipalityRehabilitationStaffData2014: function () {
+    // getMunicipalityRehabilitationStaffData2014: function () {
     //   return $.ajax({
     //     dataType:'json',
     //     method:'GET',
@@ -141,7 +141,7 @@
       $.each(plusApp.municipalityCollectionData2014[plusApp.selectedMunicipalityCollection2014], function (element, data) {
         var text = (data !== '') ? data : 'Ei tiedossa';
         $('.' + element, plus).text(text);
-      });        
+      });
       // $.each(plusApp.municipalityRehabilitationStaffData2014[plusApp.selectedMunicipality], function (element, data) {
       //   var text = (data !== '') ? plusApp.formatNr(data) : 'Ei tiedossa';
       //   $('.' + element, plus).html(text);
@@ -200,7 +200,7 @@
       // Facebook share.
       var fbtitle = 'Ovatko kuntasi vanhuspalvelut rempallaan? Katso uudesta Ylen Vanhusvahdista, millaista palvelua sinä tai vanhempasi saatte';
       // var fbtext = 'Testaa, tiedätkö sinä, millaisesta ruuasta sydämesi ja verisuonesi pitäisivät.';
-      $('.facebook', plus).attr({href: 'https://www.facebook.com/dialog/feed?app_id=147925155254978&display=popup&name=' + encodeURIComponent(fbtitle) + '&link=' + encodeURIComponent(url) + '&redirect_uri=' + url + '&picture=' + encodeURIComponent('http://images.cdn.yle.fi/image/upload/w_1024%2Ch_576%2Cc_fill%2Cg_faces%2Cq_70/13-3-9516421.jpg')});
+      $('.facebook', plus).attr({href: 'https://www.facebook.com/dialog/feed?app_id=147925155254978&display=popup&name=' + encodeURIComponent(fbtitle) + '&link=' + encodeURIComponent(url) + '&redirect_uri=' + url + '&picture=https:' + encodeURIComponent('http://images.cdn.yle.fi/image/upload/w_1024%2Ch_576%2Cc_fill%2Cg_faces%2Cq_70/13-3-9516421.jpg')});
 
       // Twitter share.
       var twtext = 'Katso uudesta Ylen Vanhusvahdista, millaista palvelua sinä tai vanhempasi saatte';
@@ -213,14 +213,14 @@
       //     $('.facebook_nr', plus).append(data.data.shares.facebook);
       //     $('.twitter_nr', plus).append(data.data.shares.twitter);
       //   },
-      //   url: 'http://yle.fi/uutiset/alpha.yle.fi/somenumbers?uri=http://yle.fi/uutiset/ylen_vanhusvahti_avattu__katso_missa_jamassa_oman_kuntasi_vanhuspalvelut_ovat/7853653'
+      //   url: '//yle.fi/uutiset/alpha.yle.fi/somenumbers?uri=//yle.fi/uutiset/ylen_vanhusvahti_avattu__katso_missa_jamassa_oman_kuntasi_vanhuspalvelut_ovat/7853653'
       // });
     },
     updateMunicipality: function (element) {
       plusApp.selectedMunicipalityCollection2014 = element.find('option:selected').data('organizer2014');
       plusApp.selectedMunicipalityCollection2016 = element.find('option:selected').data('organizer2016');
       plusApp.selectedMunicipality = element.find('option:selected').data('municipality');
-      if ($.inArray(parseInt(element.find('option:selected').val()), [185, 206]) === -1) {
+      if ($.inArray(parseInt(element.find('option:selected').val()), [185, 206]) === -1) {
         $('.municipality_selection_button_container', plus).slideDown(500);
         plusApp.updateMunicipalityData();
         // plusApp.initHomeCareUnitSelection();
@@ -258,7 +258,7 @@
       $('.value_2030', plus).text(plusApp.formatNr(y2030, true) + ' %');
       $('.pie_2015', plus).text(y2015 +',' + (100 - y2015));
       $('.pie_2030', plus).text(y2030 +',' + (100 - y2030));
-      $('.pie', plus).peity('pie'); 
+      $('.pie', plus).peity('pie');
     },
     hashChange: function () {
       if (window.location.hash !== '#etusivu') {
@@ -317,7 +317,7 @@
       });
       // Homecareunit selection change.
       plus.on('change', '.homecareunit_selection', function (event) {
-        if ($(this).find('option:selected').val() !== '') {      
+        if ($(this).find('option:selected').val() !== '') {
           plusApp.selectedHomeCareUnit = $(this).find('option:selected').html();
           plusApp.setHomeCareUnitData($(this).find('option:selected').data('id'));
           // Google analytics tracker.
@@ -370,7 +370,7 @@
     unmount: function () {
       $(window).off('resize', plusApp.getScale);
       $(window).off('hashchange', plusApp.hashChange);
-      if (plus !== undefined) {
+      if (plus !== undefined) {
         plus.unbind();
       }
       delete window.plusApp[plusApp.projectName];
@@ -587,7 +587,6 @@
       };
     },
     meta: {
-      id:this.projectName,
       version:'1.0.0'
     }
   };
