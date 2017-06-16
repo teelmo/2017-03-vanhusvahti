@@ -142,7 +142,7 @@ gulp.task('build-js', ['lint'], () => {
       }))
       .pipe(stripDebug())
       .pipe(concat('script.min.js'))
-      .pipe(insert.wrap('(function () { const define = undefined;','})();'))
+      .pipe(insert.wrap('(function () { var define = undefined;','})();'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('./public/js'))
       .pipe(gif('*.js', eval(live)));
